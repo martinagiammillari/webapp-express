@@ -6,7 +6,8 @@ const router = express.Router();
 
 
 router.get("/", movieController.index);
-router.get("/:id", movieController.show)
+router.get("/:id", movieController.show);
+router.post("/:id/review", movieController.storeReview);
 
 
 export default router;
