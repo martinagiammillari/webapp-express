@@ -18,7 +18,7 @@ function index(req, res, next) {
 
 // SHOW
 function show(req, res, next) {
-  const id = req.params.id;
+  const slug = req.params.slug;
 
   const query = `
     SELECT
@@ -30,10 +30,10 @@ function show(req, res, next) {
     FROM movies
     LEFT JOIN reviews
       ON reviews.movie_id = movies.id
-    WHERE movies.id = ?
+    WHERE movies.slug = ?
   `;
 
-  connection.query(query, [id], (err, results) => {
+  connection.query(query, [slug], (err, results) => {
     if (err) return next(err);
 
     if (results.length === 0) {
